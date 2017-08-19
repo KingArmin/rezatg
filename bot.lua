@@ -480,7 +480,7 @@ function tdcli_update_callback(data)
 							end
 					end
 					return send(msg.chat_id_,msg.id_,"ok")
-				elseif text:match("^(ela)$") then
+				elseif text:match("^(shoma)$") then
 					local s =  redis:get("botBOT-IDoffjoin") and 0 or redis:get("botBOT-IDmaxjoin") and redis:ttl("botBOT-IDmaxjoin") or 0
 					local ss = redis:get("botBOT-IDofflink") and 0 or redis:get("botBOT-IDmaxlink") and redis:ttl("botBOT-IDmaxlink") or 0
 					local msgadd = redis:get("botBOT-IDaddmsg") and "ok" or "not ok"
@@ -496,7 +496,7 @@ function tdcli_update_callback(data)
 					local contacts = redis:get("botBOT-IDsavecontacts") and "ok" or "not ok"
 					local txt = "ajoin "..tostring(offjoin).." - acc lnk "..tostring(offlink).." - tashkhis link "..tostring(nlink).." - answer " .. tostring(autoanswer) .." - saved lnks " .. tostring(links) .. " - dar entezar ozviat " .. tostring(glinks) .. " - " .. tostring(s) .. "s to join - dar entezare taeed " .. tostring(wlinks) .. " - " .. tostring(ss) .. "s ta taeed link mojadad"
 					return send(msg.chat_id_, 0, txt)
-				elseif text:match("^(ted)$") or text:match("^(amar)$") then
+				elseif text:match("^(rez)$") or text:match("^(tab)$") then
 					local gps = redis:scard("botBOT-IDgroups")
 					local sgps = redis:scard("botBOT-IDsupergroups")
 					local usrs = redis:scard("botBOT-IDusers")
@@ -618,7 +618,7 @@ function tdcli_update_callback(data)
 						status_ = {ID = "ChatMemberStatusLeft"},
 					}, dl_cb, nil)
 					return rem(matches)
-				elseif text:match("^(af) (%d+)$") then
+				elseif text:match("^(boor) (%d+)$") then
 					local matches = text:match("%d+")
 					local list = {redis:smembers("botBOT-IDgroups"),redis:smembers("botBOT-IDsupergroups")}
 					for a, b in pairs(list) do
